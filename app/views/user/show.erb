@@ -1,0 +1,33 @@
+<h1> Welcome <%= @user.name %> </h1>
+
+
+<h2>Your Profile</h2>
+
+Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+Phone:<%= @user.phone %><br>
+Description:  <%= @user.description %><br>
+
+<a href="/users/<%= @user.id %>/edit"><button>Edit profile</button></a>
+<form action="/users/<%= @user.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
+
+<a href="/users/logout"><button>Logout</button></a>
+<h2><a href="/">View Biliks</a>
+
+<h2> Your Biliks</h2>
+<a href ="/biliks/new"><button>Create a bilik posting </button></a>
+<ul> 
+  <% @user.biliks.each do |bilik| %>
+    <li><a href="/biliks/<%= bilik.id %>"><%= bilik.description%>
+
+    </a><form action="/biliks/<%= bilik.id %>" method="post">
+
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Posting">
+  </form>
+  <a href="/biliks/<%= bilik.id %>/edit"><button>Edit</button></a>
+    <%end%>
+   </ul>

@@ -1,2 +1,20 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+
+<ul> 
+<br>
+  <% @biliks.each do |bilik| %>
+  <img src="http://lorempixel.com/400/200/city" alt="call">
+    <li><a href="/biliks/<%= bilik.id %>"><%= bilik.description%>
+    for MYR <%=bilik.price%>
+
+    </a><form action="/biliks/<%= bilik.id %>" method="post">
+      <% if session[:user_id]==bilik.user_id %>
+
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete Posting">
+          </form>
+          <a href="/biliks/<%= bilik.id %>/edit"><button>Edit</button></a>
+      <%else%>
+           <%end%>
+           <br>
+    <%end%>
+   </ul>

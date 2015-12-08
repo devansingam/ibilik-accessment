@@ -1,0 +1,8 @@
+<h1>Quorem questions </h1>
+
+<ul>
+  <% @questions.each do |x| %>
+  	<li>
+  		<a href="/questions/<%= x.id %>"><%= x.question %></a> created on <%= x.created_at %> by <%= x.user.name%>
+  <%end%>
+</ul>

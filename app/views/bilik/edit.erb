@@ -1,0 +1,8 @@
+<h1>Edit Bilik Info</h1>
+
+<form action="/biliks/<%= @bilik.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>Quest: </label>
+	<input type="text" name="question" value="<%= @question.question%>"><br>
+	<input type="submit" value="Update question	">
+</form>

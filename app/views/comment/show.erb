@@ -1,0 +1,7 @@
+<h1><%= @bilik.description %></h1>
+by <%= @bilik.user.name %><br>
+<a href="/biliks/<%= @bilik.id %>/edit"><button>Edit</button></a>
+<form action="/biliks/<%= @bilik.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>	

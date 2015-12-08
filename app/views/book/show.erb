@@ -1,0 +1,50 @@
+<h1><%= @bilik.description %> for MYR <%=@bilik.price%></h1>
+by <%= @bilik.user.name %><br>
+<img src="https://cdn4.iconfinder.com/data/icons/social-icons-6/40/phone-512.png" alt="call" height="25" width="25">
+ <%=@bilik.user.phone %><br>
+ <li><% if session[:user_id]==@bilik.user_id %>
+            
+            <a href="/biliks/<%= @bilik.id %>/edit"><button>Edit Bilik Info</button></a>
+             <form action="/biliks/<%= @bilik.id %>" method="post">
+              	<input type="hidden" name="_method" value="delete">
+              	<input type="submit" value="Delete">
+          </form>
+      <%else%>
+            <br>
+      <%end%>
+<img img src="http://lorempixel.com/400/200/city" alt="hi">
+
+<h2>Location</h2>
+<%=@bilik.address %><br>
+<%=@bilik.city %><br> 
+<%=@bilik.state %><br>
+
+
+
+<h2> Comments about this bilik </h2>
+<% @bilik.comments.each do |comment|%>
+
+
+    <li><% if session[:user_id]==comment.id %>
+
+
+            <a href='/comments/<%=comment.id%>/edit'><%= comment.comment %></a> by 
+            <%= comment.user.name%>
+          
+           <% else %>
+          
+            <%= comment.comment %> by <%=comment.user.name%>
+       
+          <%end%>
+       </li>
+    <%end%>
+<br>
+<% if session[:user_id]==@bilik.user_id %>
+  <a href="/biliks/<%= @bilik.id %>/comments/new"><button>Comment</button></a>
+<%else%>
+  Please sign in to comment
+  <%end%>
+
+
+
+
